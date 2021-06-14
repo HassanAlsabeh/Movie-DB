@@ -42,3 +42,22 @@ app.get('/time',(req,res) =>{
     res.send(response);
 }
 )
+app.get("/hello/:ID", (req, res) => {
+    let hello = { status: 200, message: `hello: ${req.params.ID}` };
+    res.send(hello);
+  });
+
+
+  app.get('/search', function(req, res) {
+    if(req.query.s == "" || req.query.s == undefined)
+    {
+        let search = { status: 500, message: `You have to provide a search` };
+        res.send(search);
+        res.status(500).send()
+    }
+    else{
+        let search = { status: 200, message:`OK! You searched for:` + req.query.s };
+        res.send(search);
+        
+    }
+});  
