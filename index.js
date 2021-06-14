@@ -89,3 +89,17 @@ app.get("/movies/create", (req, res) => {
   app.get("/movies/delete", (req, res) => {
     res.send(`movies delet`);
   });
+
+
+  app.get("/movies/read/by-date", (req, res) => {
+    const sortedmovies = movies.sort((a, b) => b.year - a.year)
+    res.send(sortedmovies);
+  });
+  app.get("/movies/read/by-rating", (req, res) => {
+    const sortedmovies = movies.sort((a, b) => b.rating - a.rating)
+    res.send(sortedmovies);
+  });
+  app.get("/movies/read/by-title", (req, res) => {
+    const sortedmovies= movies.sort((a, b) => a.title.localeCompare(b.title))
+    res.send(sortedmovies);
+  });
