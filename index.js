@@ -103,3 +103,40 @@ app.get("/movies/create", (req, res) => {
     const sortedmovies= movies.sort((a, b) => a.title.localeCompare(b.title))
     res.send(sortedmovies);
   });
+
+
+
+
+
+ /*router.get("/read/id/:id(\\d+)", (req, res, next) => {
+
+  let userByIdObj = [];
+
+  if (
+    movies.length >= parseInt(req.params.id) &&
+    parseInt(req.params.id) !== 0
+  ) {
+    userByIdObj = { status: 200, data: movies[req.params.id - 1] };
+  } else {
+    userByIdObj = {
+      status: 404,
+      error: true,
+      message: `the movie ${req.params.id} does not exist`,
+    };
+  }
+
+  res.send(userByIdObj);
+});*/
+
+
+app.get('/movies/read/ID/:ID', function(req, res) 
+{
+    if(req.params.ID <= 0 || req.params.ID > movies.length)
+    {
+        res.status(404).send(`the movie ` + req.params.ID + ` doesn't exist`)
+    }
+
+    else{
+        res.status(200).send(movies[req.params.ID-1])
+    };
+}); 
