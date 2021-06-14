@@ -61,3 +61,31 @@ app.get("/hello/:ID", (req, res) => {
         
     }
 });  
+
+const movies = [
+    { title: 'Jaws', year: 1975, rating: 8 },
+    { title: 'Avatar', year: 2009, rating: 7.8 },
+    { title: 'Brazil', year: 1985, rating: 8 },
+    { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
+]
+
+app.get("/movies/create", (req, res) => {
+    res.send(`movies create`);
+  });
+
+
+  app.get("/movies/read", (req, res) => {
+    let moviesarr ={status:200, data: movies}
+    res.send(moviesarr);
+  });
+
+
+  app.get("/movies/update", (req, res) => {
+    res.send(`movies update`);
+  });
+
+
+
+  app.get("/movies/delete", (req, res) => {
+    res.send(`movies delet`);
+  });
