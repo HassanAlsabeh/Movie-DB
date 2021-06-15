@@ -69,15 +69,11 @@ const movies = [
     { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
 ]
 
-app.get("/movies/create", (req, res) => {
-    res.send(`movies create`);
-  });
 
-
-  app.get("/movies/read", (req, res) => {
-    let moviesarr ={status:200, data: movies}
-    res.send(moviesarr);
-  });
+app.get("/movies/read", (req, res) => {
+  let moviesarr ={status:200, data: movies}
+  res.send(moviesarr);
+});
 
 
   app.get("/movies/update", (req, res) => {
@@ -86,9 +82,7 @@ app.get("/movies/create", (req, res) => {
 
 
 
-  app.get("/movies/delete", (req, res) => {
-    res.send(`movies delet`);
-  });
+  
 
 
   app.get("/movies/read/by-date", (req, res) => {
@@ -134,3 +128,17 @@ app.get('/movies/add', function(req, res) {
   movies.push(movie)
   res.status(200).send(movies)
 });
+
+app.get('/movies/delete/:id',function(req,res){
+    if(req.query.id <=0 || req.params.id >movies.length)
+      {
+      res.status(404).send(`the movie` + req.params.id +`does not exists`)
+    }
+    else{
+      movies.splice(req.params.id -1, 1)
+      res.send(movies)
+  } 
+    });
+
+
+
