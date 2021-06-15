@@ -112,7 +112,7 @@ app.get('/movies/read/ID/:ID', function(req, res)
     };
 });   
 
-app.get('/movies/add', function(req, res) {
+app.post('/movies/add', function(req, res) {
   
   var name = req.query.title
   var year =  req.query.year
@@ -129,7 +129,7 @@ app.get('/movies/add', function(req, res) {
   res.status(200).send(movies)
 });
 
-app.get('/movies/delete/:id',function(req,res){
+app.delete('/movies/delete/:id',function(req,res){
     if(req.query.id <=0 || req.params.id >movies.length)
       {
       res.status(404).send(`the movie` + req.params.id +`does not exists`)
@@ -144,7 +144,7 @@ app.get('/movies/delete/:id',function(req,res){
 
     
 
-    app.get('/movies/update/:id', function(req, res) {
+    app.put('/movies/update/:id', function(req, res) {
       if(req.params.id <= 0 || req.params.id > movies.length){
           res.status(404).send("the movie " + req.params.id + " does not exist");
         } 
