@@ -106,29 +106,6 @@ app.get("/movies/create", (req, res) => {
 
 
 
-
-
- /*router.get("/read/id/:id(\\d+)", (req, res, next) => {
-
-  let userByIdObj = [];
-
-  if (
-    movies.length >= parseInt(req.params.id) &&
-    parseInt(req.params.id) !== 0
-  ) {
-    userByIdObj = { status: 200, data: movies[req.params.id - 1] };
-  } else {
-    userByIdObj = {
-      status: 404,
-      error: true,
-      message: `the movie ${req.params.id} does not exist`,
-    };
-  }
-
-  res.send(userByIdObj);
-});*/
-
-
 app.get('/movies/read/ID/:ID', function(req, res) 
 {
     if(req.params.ID <= 0 || req.params.ID > movies.length)
@@ -139,4 +116,21 @@ app.get('/movies/read/ID/:ID', function(req, res)
     else{
         res.status(200).send(movies[req.params.ID-1])
     };
-}); 
+});   
+
+app.get('/movies/add', function(req, res) {
+  
+  var name = req.query.title
+  var year =  req.query.year
+  var len = year.toString().length
+  if(name == "" || year == "" || len !=4 || isNaN(year)){res.status(403).send('you cannot create a movie without providing a title and a year')}
+  else{
+      if(req.query.rating == "" || typeof req.query.rating === "undefined"){
+          movie={title: req.query.title, year: req.query.year, rating: 4}}
+      else{
+          movie={title: req.query.title, year: req.query.year, rating: req.query.rating}
+      }
+  }
+  movies.push(movie)
+  res.status(200).send(movies)
+});
