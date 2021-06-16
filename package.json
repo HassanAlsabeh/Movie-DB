@@ -2,11 +2,10 @@
   "name": "hassan",
   "version": "1.0.0",
   "description": "database",
-  "main": "q",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "dev": "nodemon index.js"
-},
+    "dev": "nodemon server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HassanAlsabeh/Movie-DB.git"
@@ -19,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/HassanAlsabeh/Movie-DB/issues"
   },
-  "homepage": "https://github.com/HassanAlsabeh/Movie-DB#readme"
+  "homepage": "https://github.com/HassanAlsabeh/Movie-DB#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^2.2.16"
+  }
 }
